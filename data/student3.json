@@ -1,0 +1,36 @@
+{
+  "name": "Priya Menon",
+  "email": "priya.m@example.com",
+  "education": "B.E. in Information Technology",
+  "cv_file": "Priya_Menon_Resume.pdf",
+  "preferred_roles": ["Application Support Analyst", "Associate Software Engineer"],
+  "hackathons": ["College Tech Fest - Web Portal Demo"],
+  "internships": ["IT Support Trainee at Global Solutions (3 Months)"],
+  "certifications": ["ITIL v4 Foundation", "Cisco CCNA (In Progress)"],
+  "skills": [
+    {
+      "skill_name": "Technical Communication",
+      "category_code": "COMM",
+      "evidence": "Handled ticket resolutions, user triage, and SLA documentation",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Basic SQL",
+      "category_code": "SQL",
+      "evidence": "Ran database verification queries and status checks in Oracle DB",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Computer Networks & Diagnostics",
+      "category_code": "NETW",
+      "evidence": "Diagnosed DNS, network latency, and routing issues in client environments",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Logical Aptitude",
+      "category_code": "APTI",
+      "evidence": "Consistent problem-solving track record in technical support workflows",
+      "confidence": "medium"
+    }
+  ]
+}

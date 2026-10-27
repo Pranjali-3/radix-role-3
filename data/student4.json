@@ -1,0 +1,42 @@
+{
+  "name": "Rohan Verma",
+  "email": "rohan.v@example.com",
+  "education": "B.Tech in Computer Science & Engineering",
+  "cv_file": "Rohan_Verma_Resume.pdf",
+  "preferred_roles": ["Software Engineer", "Full Stack Developer", "Data Analyst"],
+  "hackathons": ["Smart India Hackathon Finalist 2025"],
+  "internships": ["Full Stack Developer Intern at CloudScale (6 Months)"],
+  "certifications": ["AWS Certified Developer - Associate"],
+  "skills": [
+    {
+      "skill_name": "Python, Java & JavaScript",
+      "category_code": "COD",
+      "evidence": "Polyglot developer across frontend, backend, and data processing scripts",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Data Structures & Algorithms",
+      "category_code": "DSA",
+      "evidence": "Solid foundational knowledge in trees, graphs, and dynamic programming",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Cloud Deployment (AWS)",
+      "category_code": "CLOUD",
+      "evidence": "Deployed containerized apps via Docker, EC2, and S3 pipelines",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Software Engineering Best Practices",
+      "category_code": "SWE",
+      "evidence": "Familiar with Git workflows, unit testing, and Agile development",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Object-Oriented Design",
+      "category_code": "OOD",
+      "evidence": "Applied clean OOP design patterns in Java desktop/web backends",
+      "confidence": "medium"
+    }
+  ]
+}

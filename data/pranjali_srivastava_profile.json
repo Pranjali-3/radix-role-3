@@ -1,0 +1,60 @@
+{
+  "name": "Pranjali Srivastava",
+  "email": "muniqueborn2007@gmail.com",
+  "education": "First-year Computer Science (AI & ML) student at JSS University with hands-on | JSS University, Noida",
+  "cv_file": "resume.pdf",
+  "preferred_roles": [
+    "AI/ML Engineer",
+    "Python Developer",
+    "Data Scientist"
+  ],
+  "hackathons": [
+    "- Innovate Bharat Hackathon 2026 (AI & Intelligent Systems Track)",
+    "- AI Core Connect Hackathon 2026"
+  ],
+  "internships": [
+    "Campus Community Program Lead Intern | Incog"
+  ],
+  "certifications": [
+    "Applied Machine Learning",
+    "Python Developer"
+  ],
+  "skills": [
+    {
+      "skill_name": "Python, C++, Go",
+      "category_code": "COD",
+      "evidence": "Extracted keywords from resume: python, c++, go",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Dsa",
+      "category_code": "DSA",
+      "evidence": "Extracted keywords from resume: dsa",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Machine Learning, Computer Vision, Prompt Engineering",
+      "category_code": "AI",
+      "evidence": "Extracted keywords from resume: machine learning, computer vision, prompt engineering",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Git, Github, Vs Code, Streamlit",
+      "category_code": "SWE",
+      "evidence": "Extracted keywords from resume: git, github, vs code, streamlit",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Oop",
+      "category_code": "OOD",
+      "evidence": "Extracted keywords from resume: oop",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Unity, Godot, Game Development",
+      "category_code": "OTHER",
+      "evidence": "Extracted keywords from resume: unity, godot, game development",
+      "confidence": "high"
+    }
+  ]
+}

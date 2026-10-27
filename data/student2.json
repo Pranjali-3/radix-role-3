@@ -1,0 +1,36 @@
+{
+  "name": "Karthik Subramaniam",
+  "email": "karthik.s@example.com",
+  "education": "B.S. in Data Science & Statistics",
+  "cv_file": "Karthik_Subramaniam_Resume.pdf",
+  "preferred_roles": ["Data Scientist", "Data Analyst"],
+  "hackathons": ["Kaggle Predictive Analytics Challenge - Top 5%"],
+  "internships": ["Data Analyst Intern at FinAnalytics (4 Months)"],
+  "certifications": ["Google Data Analytics Professional Certificate"],
+  "skills": [
+    {
+      "skill_name": "Advanced SQL & Database Tuning",
+      "category_code": "SQL",
+      "evidence": "Wrote complex window queries, indexing strategies, and ETL pipelines",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Machine Learning & PyTorch",
+      "category_code": "AI",
+      "evidence": "Trained predictive regression and classification models on structured datasets",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Quantitative Aptitude",
+      "category_code": "APTI",
+      "evidence": "Strong background in probability, linear algebra, and hypothesis testing",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Python (Pandas / NumPy)",
+      "category_code": "COD",
+      "evidence": "Primary language used for data manipulation and statistical EDA",
+      "confidence": "medium"
+    }
+  ]
+}

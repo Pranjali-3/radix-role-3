@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RADIX Profile Builder</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; background: #0f172a; color: #f8fafc; }
+    .container { max-width: 750px; margin: auto; background: #1e293b; padding: 25px; border-radius: 8px; }
+    h2, h3 { color: #38bdf8; margin-top: 0; }
+    label { display: block; margin-top: 12px; font-weight: bold; font-size: 0.9em; }
+    input, select { width: 100%; padding: 8px; margin-top: 4px; box-sizing: border-box; border-radius: 4px; border: 1px solid #475569; background: #0f172a; color: #fff; }
+    .upload-box { border: 2px dashed #0284c7; padding: 20px; text-align: center; border-radius: 6px; margin-bottom: 20px; background: #0f172a; }
+    .skill-card { background: #0f172a; border: 1px solid #334155; padding: 12px; border-radius: 6px; margin-top: 10px; position: relative; }
+    .btn { background: #0284c7; color: white; border: none; padding: 10px 15px; margin-top: 15px; cursor: pointer; border-radius: 4px; font-weight: bold; }
+    .btn:hover { background: #0369a1; }
+    .btn-add { background: #10b981; margin-top: 10px; font-size: 0.85em; padding: 6px 12px; }
+    .btn-add:hover { background: #059669; }
+    .btn-remove { background: #ef4444; padding: 4px 8px; font-size: 0.8em; margin-top: 8px; float: right; }
+    .btn-remove:hover { background: #dc2626; }
+    .status { margin-top: 15px; padding: 10px; border-radius: 4px; display: none; }
+    .success { background: #065f46; color: #34d399; }
+    .error { background: #991b1b; color: #f87171; }
+    .clearfix::after { content: ""; clear: both; display: table; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>RADIX Candidate Profile Builder</h2>
+
+    <!-- PDF Upload Section -->
+    <div class="upload-box">
+      <h3>📄 Auto-Fill Form from Resume PDF</h3>
+      <input type="file" id="pdfFileInput" accept="application/pdf" style="display: inline-block; width: auto;">
+      <button type="button" class="btn btn-add" onclick="autoFillFromPDF()">Upload & Parse PDF</button>
+    </div>
+
+    <form id="profileForm">
+      <label>Full Name</label>
+      <input type="text" id="name" placeholder="Candidate Full Name" required>
+
+      <label>Email</label>
+      <input type="email" id="email" placeholder="Email Address" required>
+
+      <label>Education</label>
+      <input type="text" id="education" placeholder="Degree / College / Institution">
+
+      <label>CV File Name</label>
+      <input type="text" id="cv_file" placeholder="Resume File Name">
+
+      <label>Preferred Roles (comma separated)</label>
+      <input type="text" id="preferred_roles" placeholder="Software Engineer, AI/ML Engineer">
+
+      <label>Hackathons (comma separated)</label>
+      <input type="text" id="hackathons" placeholder="Hackathon 1, Hackathon 2">
+
+      <label>Internships (comma separated)</label>
+      <input type="text" id="internships" placeholder="Internship 1, Internship 2">
+
+      <label>Certifications (comma separated)</label>
+      <input type="text" id="certifications" placeholder="Certification 1, Certification 2">
+
+      <h3>Skills Matrix</h3>
+      <div id="skillsContainer"></div>
+      <button type="button" class="btn btn-add" onclick="addSkillCard()">+ Add Another Skill</button>
+
+      <br>
+      <button type="submit" class="btn" style="width: 100%;">Save Candidate Profile to Data Folder</button>
+    </form>
+
+    <div id="statusBox" class="status"></div>
+  </div>
+
+  <script>
+    function createSkillCard(skill = { skill_name: "", category_code: "COD", evidence: "", confidence: "high" }) {
+      const card = document.createElement("div");
+      card.className = "skill-card clearfix";
+      card.innerHTML = `
+        <button type="button" class="btn btn-remove" onclick="this.parentElement.remove()">Remove</button>
+        <label>Skill Name</label>
+        <input type="text" class="skill_name" value="${skill.skill_name || ''}" required>
+        <label>Category Code</label>
+        <select class="category_code">
+          <option value="COD" ${skill.category_code === 'COD' ? 'selected' : ''}>COD (Coding)</option>
+          <option value="DSA" ${skill.category_code === 'DSA' ? 'selected' : ''}>DSA (Data Structures & Algorithms)</option>
+          <option value="OOD" ${skill.category_code === 'OOD' ? 'selected' : ''}>OOD (Object-Oriented Design)</option>
+          <option value="COMM" ${skill.category_code === 'COMM' ? 'selected' : ''}>COMM (Communication)</option>
+          <option value="AI" ${skill.category_code === 'AI' ? 'selected' : ''}>AI (Artificial Intelligence)</option>
+          <option value="APTI" ${skill.category_code === 'APTI' ? 'selected' : ''}>APTI (Aptitude)</option>
+          <option value="CLOUD" ${skill.category_code === 'CLOUD' ? 'selected' : ''}>CLOUD (Cloud)</option>
+          <option value="SYSD" ${skill.category_code === 'SYSD' ? 'selected' : ''}>SYSD (System Design)</option>
+          <option value="SQL" ${skill.category_code === 'SQL' ? 'selected' : ''}>SQL (SQL / Databases)</option>
+          <option value="SWE" ${skill.category_code === 'SWE' ? 'selected' : ''}>SWE (Software Engineering)</option>
+          <option value="NETW" ${skill.category_code === 'NETW' ? 'selected' : ''}>NETW (Networking)</option>
+          <option value="OS" ${skill.category_code === 'OS' ? 'selected' : ''}>OS (Operating Systems)</option>
+          <option value="OTHER" ${skill.category_code === 'OTHER' ? 'selected' : ''}>OTHER</option>
+        </select>
+        <label>Evidence / Notes</label>
+        <input type="text" class="evidence" value="${skill.evidence || ''}">
+        <label>Confidence</label>
+        <select class="confidence">
+          <option value="high" ${skill.confidence === 'high' ? 'selected' : ''}>High</option>
+          <option value="medium" ${skill.confidence === 'medium' ? 'selected' : ''}>Medium</option>
+          <option value="low" ${skill.confidence === 'low' ? 'selected' : ''}>Low</option>
+        </select>
+      `;
+      return card;
+    }
+
+    function addSkillCard(skill) {
+      document.getElementById("skillsContainer").appendChild(createSkillCard(skill));
+    }
+
+    async function autoFillFromPDF() {
+      const fileInput = document.getElementById('pdfFileInput');
+      const statusBox = document.getElementById('statusBox');
+
+      if (!fileInput.files.length) {
+        alert("Please select a PDF file first.");
+        return;
+      }
+
+      const formData = new FormData();
+      // Key MUST be named 'file' to match UploadFile = File(...) parameter in app.py
+      formData.append('file', fileInput.files[0]);
+
+      statusBox.className = 'status success';
+      statusBox.style.display = 'block';
+      statusBox.innerText = "Parsing PDF... Please wait.";
+
+      try {
+        const res = await fetch('http://127.0.0.1:8000/profile/extract-pdf', {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await res.json();
+        if (!res.ok) throw new Error(result.detail || 'PDF parsing failed');
+
+        const profile = result.data;
+
+        // Populate Form Fields
+        document.getElementById('name').value = profile.name || '';
+        document.getElementById('email').value = profile.email || '';
+        document.getElementById('education').value = profile.education || '';
+        document.getElementById('cv_file').value = profile.cv_file || '';
+        document.getElementById('preferred_roles').value = (profile.preferred_roles || []).join(', ');
+        document.getElementById('hackathons').value = (profile.hackathons || []).join(', ');
+        document.getElementById('internships').value = (profile.internships || []).join(', ');
+        document.getElementById('certifications').value = (profile.certifications || []).join(', ');
+
+        // Render Extracted Skills
+        document.getElementById('skillsContainer').innerHTML = '';
+        if (profile.skills && profile.skills.length > 0) {
+          profile.skills.forEach(skill => addSkillCard(skill));
+        } else {
+          addSkillCard();
+        }
+
+        statusBox.className = 'status success';
+        statusBox.innerText = `Successfully parsed PDF! Form auto-filled for ${profile.name}. Saved as ${result.json_saved_as}`;
+      } catch (err) {
+        statusBox.className = 'status error';
+        statusBox.innerText = `Error: ${err.message}`;
+      }
+    }
+
+    // Default card on load
+    addSkillCard();
+
+    document.getElementById('profileForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const skillCards = document.querySelectorAll('.skill-card');
+      const skills = Array.from(skillCards).map(card => ({
+        skill_name: card.querySelector('.skill_name').value,
+        category_code: card.querySelector('.category_code').value,
+        evidence: card.querySelector('.evidence').value,
+        confidence: card.querySelector('.confidence').value
+      }));
+
+      const payload = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        education: document.getElementById('education').value,
+        cv_file: document.getElementById('cv_file').value,
+        preferred_roles: document.getElementById('preferred_roles').value.split(',').map(s => s.trim()).filter(Boolean),
+        hackathons: document.getElementById('hackathons').value.split(',').map(s => s.trim()).filter(Boolean),
+        internships: document.getElementById('internships').value.split(',').map(s => s.trim()).filter(Boolean),
+        certifications: document.getElementById('certifications').value.split(',').map(s => s.trim()).filter(Boolean),
+        skills: skills
+      };
+
+      const statusBox = document.getElementById('statusBox');
+      try {
+        const res = await fetch('http://127.0.0.1:8000/profile/save', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const result = await res.json();
+        if (res.ok) {
+          statusBox.className = 'status success';
+          statusBox.style.display = 'block';
+          statusBox.innerText = `Saved successfully as ${result.saved_filename}! Accessible at /profile/${result.saved_filename}`;
+        } else {
+          throw new Error(result.detail || 'Save failed');
+        }
+      } catch (err) {
+        statusBox.className = 'status error';
+        statusBox.style.display = 'block';
+        statusBox.innerText = `Error: ${err.message}`;
+      }
+    });
+  </script>
+</body>
+</html>

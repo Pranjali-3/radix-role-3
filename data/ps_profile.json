@@ -1,0 +1,46 @@
+{
+  "name": "PS",
+  "email": "devika.nair@example.com",
+  "education": "B.Tech in Computer Science & Engineering",
+  "cv_file": "New Resume (2).pdf",
+  "preferred_roles": [
+    "Cloud Solutions Architect",
+    "DevOps / Infrastructure Engineer"
+  ],
+  "hackathons": [
+    "AWS Cloud Hackathon 2025 - Winner"
+  ],
+  "internships": [
+    "Cloud Infrastructure Intern at SystemsCorp (6 Months)"
+  ],
+  "certifications": [
+    "AWS Certified Solutions Architect",
+    "Certified Kubernetes Administrator (CKA)"
+  ],
+  "skills": [
+    {
+      "skill_name": "Python & Go",
+      "category_code": "COD",
+      "evidence": "Extracted from resume skills section",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "AWS & Kubernetes",
+      "category_code": "CLOUD",
+      "evidence": "Extracted from certifications and experience",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "System Design & Terraform",
+      "category_code": "SYSD",
+      "evidence": "Infrastructure as Code project experience",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "TCP/IP Networking",
+      "category_code": "NETW",
+      "evidence": "VPC and routing configuration skills",
+      "confidence": "medium"
+    }
+  ]
+}

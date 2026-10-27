@@ -1,0 +1,26 @@
+{
+  "name": "Test Candidate",
+  "email": "test@example.com",
+  "education": "B.Tech Computer Science",
+  "cv_file": "test_resume.pdf",
+  "preferred_roles": [
+    "Software Engineer"
+  ],
+  "hackathons": [
+    "RADIX Hackathon"
+  ],
+  "internships": [
+    "Tech Intern"
+  ],
+  "certifications": [
+    "AWS Practitioner"
+  ],
+  "skills": [
+    {
+      "skill_name": "Python",
+      "category_code": "COD",
+      "evidence": "FastAPI APIs built",
+      "confidence": "high"
+    }
+  ]
+}

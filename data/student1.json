@@ -1,0 +1,42 @@
+{
+  "name": "Ananya Rao",
+  "email": "ananya.rao@example.com",
+  "education": "B.Tech in Computer Science, Tier-1 Institute",
+  "cv_file": "Ananya_Rao_Resume.pdf",
+  "preferred_roles": ["Software Engineer", "Backend Developer"],
+  "hackathons": ["National Open Source Hackathon 2025 - 1st Runner Up"],
+  "internships": ["Backend Engineering Intern at TechCorp (6 Months)"],
+  "certifications": ["AWS Certified Solutions Architect"],
+  "skills": [
+    {
+      "skill_name": "Python & C++",
+      "category_code": "COD",
+      "evidence": "Built asynchronous microservices in FastAPI and core engines in C++",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Data Structures & Algorithms",
+      "category_code": "DSA",
+      "evidence": "400+ LeetCode problems solved; active competitive programmer",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "Distributed Systems Design",
+      "category_code": "SYSD",
+      "evidence": "Designed a fault-tolerant distributed key-value store using Raft consensus",
+      "confidence": "medium"
+    },
+    {
+      "skill_name": "Linux Internals & OS",
+      "category_code": "OS",
+      "evidence": "Worked with multithreading, memory management, and process scheduling",
+      "confidence": "high"
+    },
+    {
+      "skill_name": "TCP/IP & Sockets",
+      "category_code": "NETW",
+      "evidence": "Implemented custom TCP socket wrapper protocols for async IPC",
+      "confidence": "medium"
+    }
+  ]
+}
